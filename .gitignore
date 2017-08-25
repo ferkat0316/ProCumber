@@ -1,4 +1,3 @@
-.idea/ProCumber.iml
-.idea/misc.xml
-.idea/modules.xml
+.idea/*.xml
+.idea/*.iml
 node_modules/
