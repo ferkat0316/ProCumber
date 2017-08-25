@@ -1,0 +1,37 @@
+{
+  "name": "procumber",
+  "version": "0.0.1",
+  "description": "Sample Protractor-CucumberJS framework",
+  "main": "./config/conf.js",
+  "scripts": {
+    "test": "protractor config/config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ferkat0316/ProCumber.git"
+  },
+  "keywords": [
+    "Protractor",
+    "Cucumber",
+    "CucumberJs",
+    "Angular",
+    "E2E"
+  ],
+  "author": "Ferkat Jawdat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ferkat0316/ProCumber/issues"
+  },
+  "homepage": "https://github.com/ferkat0316/ProCumber#readme",
+  "dependencies": {
+    "cucumber": "^3.0.0",
+    "cucumberjs-allure-reporter": "^1.0.3",
+    "dotenv": "^4.0.0",
+    "pg": "^7.2.0",
+    "protractor": "^5.1.2",
+    "protractor-cucumber-framework": "^4.0.3"
+  },
+  "devDependencies": {
+    "jsdoc": "^3.5.4"
+  }
+}
