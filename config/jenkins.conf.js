@@ -1,36 +1,46 @@
 /**
  * Created by Ferkat on 8/25/17.
  */
+var chai = require('chai');
+var chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
+
+
 exports.config = {
-    //if set to true, tests will execute on local browsers
-    directConnect: true,
 
+    directConnect: false,
 
-    //setting browser capabilities
+    baseUrl: '',
+
     capabilities: {
-        'browserName': (process.env.TEST_BROWSER_NAME || 'chrome'),
-        'version': (process.env.TEST_BROWSER_VERSION || 'ANY'),
-        'marionette': true,
+        'browserName': 'phantomjs',
+        'phantomjs.binary.path': './node_modules/phantomjs/bin/phantomjs',
+        'shardTestFiles': true,
         'chromeOptions': {
             args: ['--window-size=1920,1080']
+
         },
-        'shardTestFiles': true,
-        'maxInstances': 3
+        maxInstances: 1,
     },
 
     framework: 'custom',
     frameworkPath: require.resolve('protractor-cucumber-framework'),
-    ignoreUncaughtExceptions: true,
-
 
     specs: [
-        //add your spc files here
+        //add your feature files here
     ],
+
 
     exclude: [
         //add tests you want to exclude from execution to here
     ],
 
+
+    /**
+     * Description
+     * @method onPrepare
+     * @return
+     */
     onPrepare: function () {
 
         browser.ignoreSynchronization = true;
@@ -49,6 +59,7 @@ exports.config = {
             return origFn.apply(browser.driver.controlFlow(), args);
         };
 
+
     },
     cucumberOpts: {
         keepAlive: false,
@@ -56,14 +67,11 @@ exports.config = {
         strict: true,
         format: ['pretty'],
         require: [
+
             '../support/*.js',
-            'main.step.js'
-        ],
-
-
-        // tags: '~@skip'
+            'main.step.js'],
 
 
     }
+};
 
-}

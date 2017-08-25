@@ -4,7 +4,16 @@
   "description": "Sample Protractor-CucumberJS framework",
   "main": "./config/conf.js",
   "scripts": {
-    "test": "protractor config/config.js"
+    "postinstall": "cd ./node_modules/protractor/bin/ && webdriver-manager update",
+    "allure": "npm install allure-commandline -g",
+    "test": "protractor config/config.js",
+    "test:Jenkins": "protractor config/jenkins.conf.js",
+    "test:sauce": "protractor config/saucelabs.conf.js",
+    "clean": "rm -rf reports",
+    "apiTest": "protractor config/dbApiConf.js",
+    "report": "allure generate reports/xml -o reports/allure-report",
+    "openReport": "allure report open -o ./reports/allure-report",
+    "start": "webdriver-manager start"
   },
   "repository": {
     "type": "git",
@@ -24,12 +33,17 @@
   },
   "homepage": "https://github.com/ferkat0316/ProCumber#readme",
   "dependencies": {
+    "chai": "^4.1.1",
+    "chai-as-promised": "^7.1.1",
     "cucumber": "^3.0.0",
     "cucumberjs-allure-reporter": "^1.0.3",
     "dotenv": "^4.0.0",
     "pg": "^7.2.0",
+    "phantomjs": "^2.1.7",
+    "phantomjs-prebuilt": "^2.1.15",
     "protractor": "^5.1.2",
-    "protractor-cucumber-framework": "^4.0.3"
+    "protractor-cucumber-framework": "^4.0.3",
+    "superagent": "^3.6.0"
   },
   "devDependencies": {
     "jsdoc": "^3.5.4"
